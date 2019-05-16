@@ -1,0 +1,79 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "images/icon.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "WhatsApp",
+      "description": "Send a whatsApp message.",
+      "step1Label": "Configure WhatsApp"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [
+        {
+          "phone": "{{Contact.Attribute.JB_CUSTOMACTIVITY.phone}}",
+          "message": "{{Contact.Attribute.JB_CUSTOMACTIVITY.message}}"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://apprene.herokuapp.com/journeybuilder/execute",
+      "verb": "POST",
+      "useJwt": true,
+      "timeout": 10000
+    }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "c1009dfa-eb0b-48c5-8521-3c8da1e34bb9",
+    "save": {
+      "url": "https://apprene.herokuapp.com/journeybuilder/save",
+      "verb": "POST",
+      "useJwt": true
+    },
+    "publish": {
+      "url": "https://apprene.herokuapp.com/journeybuilder/publish",
+      "verb": "POST",
+      "useJwt": true
+    },
+    "stop": {
+      "url": "https://apprene.herokuapp.com/journeybuilder/stop",
+      "verb": "POST",
+      "useJwt": true
+    },
+    "validate": {
+      "url": "https://apprene.herokuapp.com/journeybuilder/validate",
+      "verb": "POST",
+      "useJwt": true
+    }
+  },
+  "wizardSteps": [
+    { "label": "Configure Activity", "key": "step1" }
+  ],
+  "userInterfaces": {
+    "configModal": {
+      "height": 400,
+      "width": 1000,
+      "fullscreen": false
+    }
+  },
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+              "message": {
+                  "dataType": "text",
+                  "isNullable": false,
+                  "direction": "in"
+              }
+          }
+        ],
+        "outArguments": []
+      }
+    }
+  }
+}
